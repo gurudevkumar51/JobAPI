@@ -68,27 +68,14 @@
     <Compile Include="DataAccess\AccountRepository.cs" />
     <Compile Include="DataAccess\BaseRepository.cs" />
     <Compile Include="Entity\ChangePassword.cs" />
-    <Compile Include="Entity\EducationDetails.cs" />
-    <Compile Include="Entity\EmployerProfile.cs" />
-    <Compile Include="Entity\ExperienceDetails.cs" />
-    <Compile Include="Entity\Job.cs" />
-    <Compile Include="Entity\JobActivity.cs" />
     <Compile Include="Entity\Login.cs" />
-    <Compile Include="Entity\MasterEntities\Currency.cs" />
-    <Compile Include="Entity\MasterEntities\EmplopyerIndustry.cs" />
-    <Compile Include="Entity\MasterEntities\JobType.cs" />
-    <Compile Include="Entity\MasterEntities\Skill.cs" />
-    <Compile Include="Entity\MasterEntities\SocialMedia.cs" />
-    <Compile Include="Entity\MasterEntities\UserRole.cs" />
-    <Compile Include="Entity\SeekerProfile.cs" />
-    <Compile Include="Entity\SocialMediaProfiles.cs" />
     <Compile Include="Entity\User.cs" />
-    <Compile Include="Mapper\SeekerMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceManager\IAccount.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
+    <Folder Include="Mapper\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

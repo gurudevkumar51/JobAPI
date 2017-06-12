@@ -4,9 +4,6 @@
   https://go.microsoft.com/fwlink/?LinkId=301879
   -->
 <configuration>
-  <connectionStrings>
-    <add name="JobPortalConString" connectionString="Data Source=DEV\DEVSQL;Initial Catalog=WebphonixJobsDB;user id=sa;pwd=Gurudev51#;"/>
-  </connectionStrings>
   <appSettings></appSettings>
   <system.web>
     <compilation debug="true" targetFramework="4.5.2"/>

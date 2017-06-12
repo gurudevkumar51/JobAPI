@@ -16,7 +16,7 @@ namespace WebApiDAL.DataAccess
 
             static BaseRepository()
             {
-                connectionSettings = ConfigurationManager.ConnectionStrings["JobPortalConString"];
+                connectionSettings = ConfigurationManager.ConnectionStrings["APIConnectionString"];
                 ProviderName = connectionSettings.ProviderName;
                 db = new SqlDatabase(connectionSettings.ConnectionString);
             }
