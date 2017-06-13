@@ -18,6 +18,50 @@ namespace WebApiDAL.Common
 {
     public class GenericClass
     {
+        public static string Hash(string value)
+        {
+            return Convert.ToBase64String(
+                System.Security.Cryptography.SHA256.Create()
+                .ComputeHash(Encoding.UTF8.GetBytes(value))
+                );
+        }
+
+        public static string IntToStringMonth(int value)
+        {
+            string month = "";
+            switch (value)
+            {
+                case 1:
+                    month = "January"; break;
+                case 2:
+                    month = "February"; break;
+                case 3:
+                    month = "March"; break;
+                case 4:
+                    month = "April"; break;
+                case 5:
+                    month = "May"; break;
+                case 6:
+                    month = "June"; break;
+                case 7:
+                    month = "July"; break;
+                case 8:
+                    month = "August"; break;
+                case 9:
+                    month = "September"; break;
+                case 10:
+                    month = "October"; break;
+                case 11:
+                    month = "November"; break;
+                case 12:
+                    month = "December"; break;
+                default:
+                    month = "invalid Month number";
+                    break;
+            }
+            return month;
+        }
+
         public static string Encode(string text, string purpose)
         {
             if (string.IsNullOrEmpty(text))
@@ -27,13 +71,7 @@ namespace WebApiDAL.Common
             byte[] encodedValue = MachineKey.Protect(stream, purpose);
             return HttpServerUtility.UrlTokenEncode(encodedValue);
         }
-
-        public static byte[] imageToByteArray(System.Drawing.Image imageIn)
-        {
-            MemoryStream ms = new MemoryStream();
-            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-            return ms.ToArray();
-        }
+       
         public static string Decode(string text, string purpose)
         {
             if (string.IsNullOrEmpty(text))
@@ -42,6 +80,13 @@ namespace WebApiDAL.Common
             byte[] stream = HttpServerUtility.UrlTokenDecode(text);
             byte[] decodedValue = MachineKey.Unprotect(stream, purpose);
             return Encoding.UTF8.GetString(decodedValue);
+        }
+
+        public static byte[] imageToByteArray(System.Drawing.Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            return ms.ToArray();
         }
 
         //compress file
