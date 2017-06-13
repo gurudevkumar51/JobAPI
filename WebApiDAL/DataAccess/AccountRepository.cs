@@ -43,6 +43,11 @@ namespace WebApiDAL.DataAccess
         public List<User> AllUserList()
         {
             List<User> users = new List<User>();
+            User u = new User();
+            u.ID = 1;
+            u.Email = "gurudevkumar51@hotmail.com";
+
+            users.Add(u);
             return users;
         }
     }
