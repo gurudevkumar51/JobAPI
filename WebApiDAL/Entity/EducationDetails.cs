@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApiDAL.Entity
 {
-    class EducationDetails
+    public class EducationDetails
     {
         public int UserID { get; set; }
         public string UserName { get; set; }

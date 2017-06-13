@@ -15,6 +15,7 @@ namespace WebApiDAL.DataAccess
             Ermsg = "";
             return true;
         }
+
         public Boolean ChangePassword(ChangePassword chp, string Eml, out string Ermsg)
         {
             Ermsg = "";
@@ -25,6 +26,18 @@ namespace WebApiDAL.DataAccess
         {
             ErrMsg = "";
             return new User();
+        }
+
+        public Boolean UpdateUser(User usr, out string Ermsg)
+        {
+            Ermsg = "";
+            return true;
+        }
+
+        public Boolean DeactivateAccount(int UsrID, out string ErMsg)
+        {
+            ErMsg = "";
+            return true;
         }
     }
 }
