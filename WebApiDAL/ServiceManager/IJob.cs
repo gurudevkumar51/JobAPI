@@ -10,8 +10,8 @@ namespace WebApiDAL.ServiceManager
     public interface IJob
     {
         Boolean PostJob(Job job, out string ErMsg);
-        Boolean UpdateJob(Job job, out string ErMsg);
-        Boolean DeleteJob(int jobID, out string ErMsg);
+        Boolean UpdateJob(Job job, JobActivity jobactivity, out string ErMsg);
+        Boolean DeleteJob(JobActivity jobactivity, out string ErMsg);
         Boolean ApplyJob(JobActivity jobactivity, out string ErMsg);
     }
 }

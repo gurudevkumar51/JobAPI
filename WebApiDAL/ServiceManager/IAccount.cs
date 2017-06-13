@@ -14,5 +14,6 @@ namespace WebApiDAL.ServiceManager
         User Login(Login lgn, out string ErrMsg);
         Boolean UpdateUser(User usr, out string Ermsg);
         Boolean DeactivateAccount(int UsrID, out string ErMsg);
+        List<User> AllUserList();
     }
 }

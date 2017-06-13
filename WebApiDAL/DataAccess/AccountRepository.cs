@@ -39,5 +39,11 @@ namespace WebApiDAL.DataAccess
             ErMsg = "";
             return true;
         }
+
+        public List<User> AllUserList()
+        {
+            List<User> users = new List<User>();
+            return users;
+        }
     }
 }

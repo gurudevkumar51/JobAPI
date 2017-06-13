@@ -110,6 +110,8 @@
     <Compile Include="Authentication\MyAuthorizationServerProvider.cs" />
     <Compile Include="Authentication\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\JobController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

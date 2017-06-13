@@ -98,6 +98,9 @@
     <Compile Include="Mapper\UserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceManager\IAccount.cs" />
+    <Compile Include="ServiceManager\IEmployer.cs" />
+    <Compile Include="ServiceManager\IJob.cs" />
+    <Compile Include="ServiceManager\ISeeker.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

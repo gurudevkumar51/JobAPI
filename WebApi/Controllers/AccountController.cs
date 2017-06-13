@@ -14,30 +14,17 @@ namespace WebApi.Controllers
     public class AccountController : ApiController
     {
         private IAccount Acc;
+        private string Ermsg = "";
         public AccountController()
         {
             Acc = new AccountRepository();
-        }
-
-        [Authorize(Roles = "admin")]
-        [HttpGet]
-        [Route("api/data/authorize")]
-        public IHttpActionResult GetForAdmin()
-        {
-            var identity = (ClaimsIdentity)User.Identity;
-
-            var roles = identity.Claims
-                        .Where(c => c.Type == ClaimTypes.Role)
-                        .Select(c => c.Value);
-            return Ok("Hello " + identity.Name + " Role: " + string.Join(",", roles.ToList()));
         }
 
         [AllowAnonymous]
         [HttpPost]
         [Route("api/Account/Register")]
         public IHttpActionResult RegisterUser(User usr)
-        {
-            string Ermsg = "";
+        {            
             if (usr == null)
             {
                 return Json(new { success = false, responseText = "Send proper data", responseCode = HttpStatusCode.BadRequest });
@@ -61,7 +48,6 @@ namespace WebApi.Controllers
         [Route("api/Account/ChangePassword")]
         public IHttpActionResult ChangePassword(ChangePassword chP)
         {
-            string Ermsg = "";
             var identity = (ClaimsIdentity)User.Identity;
             if (chP == null)
             {
