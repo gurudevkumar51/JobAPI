@@ -10,7 +10,7 @@ using WebApiDAL.Entity;
 using WebApiDAL.ServiceManager;
 
 namespace WebApi.Controllers
-{
+{    
     public class AccountController : ApiController
     {
         private IAccount Acc;
