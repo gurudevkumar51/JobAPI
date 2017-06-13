@@ -12,5 +12,7 @@ namespace WebApiDAL.ServiceManager
         Boolean RegisterUser(User usr, out string Ermsg);
         Boolean ChangePassword(ChangePassword chp, string Eml, out string Ermsg);
         User Login(Login lgn, out string ErrMsg);
+        Boolean UpdateUser(User usr, out string Ermsg);
+        Boolean DeactivateAccount(int UsrID, out string ErMsg);
     }
 }
