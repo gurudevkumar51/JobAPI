@@ -10,10 +10,12 @@ namespace WebApiDAL.Entity
     public class Job
     {
         public int ID { get; set; }
-        public int EmployerID { get; set; }
-        public string EmployerName { get; set; }
+        //public int EmployerID { get; set; }
 
-        public int JobTypeID { get; set; }
+        public EmployerProfile Employer { get; set; }
+        //public string EmployerName { get; set; }
+
+        public JobType JobType { get; set; }
 
         public DateTime? CreatedDate { get; set; }
         public string JobDescription { get; set; }
