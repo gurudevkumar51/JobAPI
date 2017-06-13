@@ -9,6 +9,7 @@ namespace WebApiDAL.Entity.MasterEntities
     public class Skill
     {
         public int ID { get; set; }
+
         public string skill { get; set; }
     }
 }
