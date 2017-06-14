@@ -39,6 +39,8 @@ namespace WebApi
             {
                 identity.AddClaim(new Claim(ClaimTypes.Role, usr.Role));
                 identity.AddClaim(new Claim("email", usr.Email));
+                identity.AddClaim(new Claim("PhoneNumber", usr.PhoneNumber));
+                identity.AddClaim(new Claim("UserID", usr.ID.ToString()));
                 identity.AddClaim(new Claim(ClaimTypes.Name, usr.PhoneNumber));
                 context.Validated(identity);
             }
