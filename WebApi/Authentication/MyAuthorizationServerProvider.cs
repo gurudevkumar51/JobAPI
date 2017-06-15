@@ -64,7 +64,6 @@ namespace WebApi
             //    identity.AddClaim(new Claim(ClaimTypes.Name, "Akhil"));
             //    context.Validated(identity);
             //}
-
         }
     }
 }

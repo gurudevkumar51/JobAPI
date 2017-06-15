@@ -25,7 +25,8 @@ namespace WebApiDAL.DataAccess
         public User Login(Login lgn, out string ErrMsg)
         {
             ErrMsg = "";
-            return new User();
+            var pp = AllUserList().FirstOrDefault();
+            return pp;
         }
 
         public Boolean UpdateUser(User usr, out string Ermsg)
@@ -46,6 +47,9 @@ namespace WebApiDAL.DataAccess
             User u = new User();
             u.ID = 1;
             u.Email = "gurudevkumar51@hotmail.com";
+            u.Password = "123";
+            u.Role = "admin";
+            u.PhoneNumber = "1234567896";
 
             users.Add(u);
             return users;
