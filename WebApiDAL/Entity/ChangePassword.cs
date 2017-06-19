@@ -11,7 +11,7 @@ namespace WebApiDAL.Entity
     {
         [Display(Name = "Old Password")]
         [DataType(DataType.Password)]
-        [MaxLength(15, ErrorMessage = "Maximum 15 characters required")]
+        //[MaxLength(15, ErrorMessage = "Maximum 15 characters required")]
         public string Password { get; set; }
 
         [Display(Name = "New Password")]
