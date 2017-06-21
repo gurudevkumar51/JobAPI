@@ -13,6 +13,7 @@ namespace WebApiDAL.DataAccess
         //To Post new Job
         public Boolean PostJob(Job job, out string ErMsg)
         {
+            //Post Job
             ErMsg = "";            
             return true;
         }

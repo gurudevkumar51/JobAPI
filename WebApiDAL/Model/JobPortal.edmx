@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WebphonixJobsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Currency" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Tbl_EducationDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CertificationName" Type="varchar" MaxLength="50" />
+          <Property Name="Stream" Type="varchar" MaxLength="10" />
+          <Property Name="InstituteName" Type="varchar(max)" />
+          <Property Name="UniversityName" Type="varchar(max)" />
+          <Property Name="JoinDate" Type="datetime" />
+          <Property Name="CompletionDate" Type="datetime" />
+          <Property Name="Percantage" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="CGPA" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_EmployerIndustry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Industry" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Tbl_EmployerProfile">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="IndustryId" Type="int" />
+          <Property Name="EmployerName" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyDescription" Type="varchar(max)" />
+          <Property Name="EstablishmentDate" Type="datetime" />
+          <Property Name="WebsiteURL" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_ExperienceDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="20" />
+          <Property Name="EmployerName" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="JoinDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Is_CurrentJob" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tbl_Job">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="JobTypeID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="JobDescription" Type="varchar(max)" />
+          <Property Name="JobLocation" Type="varchar" MaxLength="50" />
+          <Property Name="MinExperienceRequired" Type="decimal" Precision="2" Scale="1" />
+          <Property Name="MaxExperienceRequired" Type="decimal" Precision="2" Scale="1" />
+          <Property Name="ExpireDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tbl_JobActivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="Activity" Type="varchar(max)" />
+          <Property Name="ActivityDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_JobSkill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobID" Type="int" />
+          <Property Name="SkillId" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_JobType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_SeekerProfile">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="CurrentSalary" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="ExpectedSalary" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="Introduction" Type="varchar(max)" />
+          <Property Name="CurrencyID1" Type="int" />
+          <Property Name="ResumePath" Type="varchar(max)" />
+          <Property Name="Dob" Type="datetime" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Tbl_SeekerSkill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="SkillID" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Skill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Skill" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tbl_SocialMedia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SocialMedia" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="UserEmail" Type="varchar(max)" />
+          <Property Name="PassWord" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" />
+          <Property Name="ProfileImgPath" Type="varchar(max)" />
+          <Property Name="RegistrationDate" Type="datetime" />
+          <Property Name="SmsActive" Type="bit" />
+          <Property Name="EmailActive" Type="bit" />
+          <Property Name="AccountActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tbl_UserLog">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" />
+          <Property Name="LastJobApplyDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Tbl_UserSocialProfile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="SocialMediaID" Type="int" />
+          <Property Name="Activity" Type="varchar(max)" />
+          <Property Name="ProfileURL" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="WebphonixJobsDBModelStoreContainer">
+          <EntitySet Name="Tbl_Currency" EntityType="Self.Tbl_Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_EducationDetails" EntityType="Self.Tbl_EducationDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_EmployerIndustry" EntityType="Self.Tbl_EmployerIndustry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_EmployerProfile" EntityType="Self.Tbl_EmployerProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ExperienceDetails" EntityType="Self.Tbl_ExperienceDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Job" EntityType="Self.Tbl_Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_JobActivity" EntityType="Self.Tbl_JobActivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_JobSkill" EntityType="Self.Tbl_JobSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_JobType" EntityType="Self.Tbl_JobType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SeekerProfile" EntityType="Self.Tbl_SeekerProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SeekerSkill" EntityType="Self.Tbl_SeekerSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Skill" EntityType="Self.Tbl_Skill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SocialMedia" EntityType="Self.Tbl_SocialMedia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_User" EntityType="Self.Tbl_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_UserLog" EntityType="Self.Tbl_UserLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_UserRole" EntityType="Self.Tbl_UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_UserSocialProfile" EntityType="Self.Tbl_UserSocialProfile" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebphonixJobsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_EducationDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CertificationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Stream" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="InstituteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UniversityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JoinDate" Type="DateTime" Precision="3" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="3" />
+          <Property Name="Percantage" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="CGPA" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="UserID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_EmployerIndustry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Industry" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_EmployerProfile">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="IndustryId" Type="Int32" />
+          <Property Name="EmployerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EstablishmentDate" Type="DateTime" Precision="3" />
+          <Property Name="WebsiteURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ExperienceDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="JobTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmployerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JoinDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Is_CurrentJob" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Tbl_Job">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="JobTypeID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JobLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MinExperienceRequired" Type="Decimal" Precision="2" Scale="1" />
+          <Property Name="MaxExperienceRequired" Type="Decimal" Precision="2" Scale="1" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Tbl_JobActivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="Activity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActivityDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Tbl_JobSkill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobID" Type="Int32" />
+          <Property Name="SkillId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_JobType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SeekerProfile">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentSalary" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="ExpectedSalary" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="Introduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CurrencyID1" Type="Int32" />
+          <Property Name="ResumePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dob" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SeekerSkill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="SkillID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Skill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Skill" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SocialMedia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SocialMedia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="UserEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ProfileImgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <Property Name="SmsActive" Type="Boolean" />
+          <Property Name="EmailActive" Type="Boolean" />
+          <Property Name="AccountActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Tbl_UserLog">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <Property Name="LastJobApplyDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Tbl_UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_UserSocialProfile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="SocialMediaID" Type="Int32" />
+          <Property Name="Activity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProfileURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="WebphonixJobsDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_Currency" EntityType="Self.Tbl_Currency" />
+          <EntitySet Name="Tbl_EducationDetails" EntityType="Self.Tbl_EducationDetails" />
+          <EntitySet Name="Tbl_EmployerIndustry" EntityType="Self.Tbl_EmployerIndustry" />
+          <EntitySet Name="Tbl_EmployerProfile" EntityType="Self.Tbl_EmployerProfile" />
+          <EntitySet Name="Tbl_ExperienceDetails" EntityType="Self.Tbl_ExperienceDetails" />
+          <EntitySet Name="Tbl_Job" EntityType="Self.Tbl_Job" />
+          <EntitySet Name="Tbl_JobActivity" EntityType="Self.Tbl_JobActivity" />
+          <EntitySet Name="Tbl_JobSkill" EntityType="Self.Tbl_JobSkill" />
+          <EntitySet Name="Tbl_JobType" EntityType="Self.Tbl_JobType" />
+          <EntitySet Name="Tbl_SeekerProfile" EntityType="Self.Tbl_SeekerProfile" />
+          <EntitySet Name="Tbl_SeekerSkill" EntityType="Self.Tbl_SeekerSkill" />
+          <EntitySet Name="Tbl_Skill" EntityType="Self.Tbl_Skill" />
+          <EntitySet Name="Tbl_SocialMedia" EntityType="Self.Tbl_SocialMedia" />
+          <EntitySet Name="Tbl_User" EntityType="Self.Tbl_User" />
+          <EntitySet Name="Tbl_UserLog" EntityType="Self.Tbl_UserLog" />
+          <EntitySet Name="Tbl_UserRole" EntityType="Self.Tbl_UserRole" />
+          <EntitySet Name="Tbl_UserSocialProfile" EntityType="Self.Tbl_UserSocialProfile" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebphonixJobsDBModelStoreContainer" CdmEntityContainer="WebphonixJobsDBEntities">
+          <EntitySetMapping Name="Tbl_Currency">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_Currency">
+              <MappingFragment StoreEntitySet="Tbl_Currency">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_EducationDetails">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_EducationDetails">
+              <MappingFragment StoreEntitySet="Tbl_EducationDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CertificationName" ColumnName="CertificationName" />
+                <ScalarProperty Name="Stream" ColumnName="Stream" />
+                <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+                <ScalarProperty Name="UniversityName" ColumnName="UniversityName" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="Percantage" ColumnName="Percantage" />
+                <ScalarProperty Name="CGPA" ColumnName="CGPA" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_EmployerIndustry">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_EmployerIndustry">
+              <MappingFragment StoreEntitySet="Tbl_EmployerIndustry">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Industry" ColumnName="Industry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_EmployerProfile">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_EmployerProfile">
+              <MappingFragment StoreEntitySet="Tbl_EmployerProfile">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IndustryId" ColumnName="IndustryId" />
+                <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+                <ScalarProperty Name="CompanyDescription" ColumnName="CompanyDescription" />
+                <ScalarProperty Name="EstablishmentDate" ColumnName="EstablishmentDate" />
+                <ScalarProperty Name="WebsiteURL" ColumnName="WebsiteURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ExperienceDetails">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_ExperienceDetails">
+              <MappingFragment StoreEntitySet="Tbl_ExperienceDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Is_CurrentJob" ColumnName="Is_CurrentJob" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Job">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_Job">
+              <MappingFragment StoreEntitySet="Tbl_Job">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="JobTypeID" ColumnName="JobTypeID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="JobLocation" ColumnName="JobLocation" />
+                <ScalarProperty Name="MinExperienceRequired" ColumnName="MinExperienceRequired" />
+                <ScalarProperty Name="MaxExperienceRequired" ColumnName="MaxExperienceRequired" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_JobActivity">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_JobActivity">
+              <MappingFragment StoreEntitySet="Tbl_JobActivity">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_JobSkill">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_JobSkill">
+              <MappingFragment StoreEntitySet="Tbl_JobSkill">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="SkillId" ColumnName="SkillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_JobType">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_JobType">
+              <MappingFragment StoreEntitySet="Tbl_JobType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JobType" ColumnName="JobType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SeekerProfile">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_SeekerProfile">
+              <MappingFragment StoreEntitySet="Tbl_SeekerProfile">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="CurrentSalary" ColumnName="CurrentSalary" />
+                <ScalarProperty Name="ExpectedSalary" ColumnName="ExpectedSalary" />
+                <ScalarProperty Name="Introduction" ColumnName="Introduction" />
+                <ScalarProperty Name="CurrencyID1" ColumnName="CurrencyID1" />
+                <ScalarProperty Name="ResumePath" ColumnName="ResumePath" />
+                <ScalarProperty Name="Dob" ColumnName="Dob" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SeekerSkill">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_SeekerSkill">
+              <MappingFragment StoreEntitySet="Tbl_SeekerSkill">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Skill">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_Skill">
+              <MappingFragment StoreEntitySet="Tbl_Skill">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Skill" ColumnName="Skill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SocialMedia">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_SocialMedia">
+              <MappingFragment StoreEntitySet="Tbl_SocialMedia">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SocialMedia" ColumnName="SocialMedia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_User">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_User">
+              <MappingFragment StoreEntitySet="Tbl_User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ProfileImgPath" ColumnName="ProfileImgPath" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="SmsActive" ColumnName="SmsActive" />
+                <ScalarProperty Name="EmailActive" ColumnName="EmailActive" />
+                <ScalarProperty Name="AccountActive" ColumnName="AccountActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_UserLog">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_UserLog">
+              <MappingFragment StoreEntitySet="Tbl_UserLog">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastJobApplyDate" ColumnName="LastJobApplyDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_UserRole">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_UserRole">
+              <MappingFragment StoreEntitySet="Tbl_UserRole">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_UserSocialProfile">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_UserSocialProfile">
+              <MappingFragment StoreEntitySet="Tbl_UserSocialProfile">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SocialMediaID" ColumnName="SocialMediaID" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="ProfileURL" ColumnName="ProfileURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
