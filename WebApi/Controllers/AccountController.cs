@@ -8,9 +8,10 @@ using System.Web.Http;
 using WebApiDAL.DataAccess;
 using WebApiDAL.Entity;
 using WebApiDAL.ServiceManager;
+using WebApiDAL.Model;
 
 namespace WebApi.Controllers
-{    
+{
     public class AccountController : ApiController
     {
         private IAccount Acc;
@@ -23,8 +24,8 @@ namespace WebApi.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("api/Account/Register")]
-        public IHttpActionResult RegisterUser(User usr)
-        {            
+        public IHttpActionResult RegisterUser(Tbl_User usr)
+        {
             if (usr == null)
             {
                 return Json(new { success = false, responseText = "Send proper data", responseCode = HttpStatusCode.BadRequest });
