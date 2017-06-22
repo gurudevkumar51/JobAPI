@@ -14,15 +14,19 @@ namespace WebApiDAL.Model
     
     public partial class Tbl_SeekerProfile
     {
+        public int SeekerProfileID { get; set; }
         public int UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Nullable<decimal> CurrentSalary { get; set; }
         public Nullable<decimal> ExpectedSalary { get; set; }
         public string Introduction { get; set; }
-        public Nullable<int> CurrencyID1 { get; set; }
+        public Nullable<int> CurrencyID { get; set; }
         public string ResumePath { get; set; }
         public Nullable<System.DateTime> Dob { get; set; }
         public string Gender { get; set; }
+    
+        public virtual Tbl_Currency Tbl_Currency { get; set; }
+        public virtual Tbl_User Tbl_User { get; set; }
     }
 }
