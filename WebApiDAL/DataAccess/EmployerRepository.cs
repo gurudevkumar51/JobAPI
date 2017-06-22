@@ -11,6 +11,7 @@ namespace WebApiDAL.DataAccess
     {
         public Boolean BuildCompanyProfile(EmployerProfile CompanyProfile, out string ErMsg)
         {
+            //Comment Tests
             ErMsg = "";
             return true;
         }
