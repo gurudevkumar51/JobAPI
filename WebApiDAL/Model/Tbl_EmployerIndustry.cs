@@ -14,7 +14,16 @@ namespace WebApiDAL.Model
     
     public partial class Tbl_EmployerIndustry
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tbl_EmployerIndustry()
+        {
+            this.Tbl_EmployerProfile = new HashSet<Tbl_EmployerProfile>();
+        }
+    
         public int ID { get; set; }
         public string Industry { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_EmployerProfile> Tbl_EmployerProfile { get; set; }
     }
 }

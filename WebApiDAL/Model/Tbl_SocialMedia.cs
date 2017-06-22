@@ -14,7 +14,16 @@ namespace WebApiDAL.Model
     
     public partial class Tbl_SocialMedia
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tbl_SocialMedia()
+        {
+            this.Tbl_UserSocialProfile = new HashSet<Tbl_UserSocialProfile>();
+        }
+    
         public int ID { get; set; }
         public string SocialMedia { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_UserSocialProfile> Tbl_UserSocialProfile { get; set; }
     }
 }

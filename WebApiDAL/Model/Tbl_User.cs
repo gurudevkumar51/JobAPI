@@ -14,6 +14,19 @@ namespace WebApiDAL.Model
     
     public partial class Tbl_User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tbl_User()
+        {
+            this.Tbl_EducationDetails = new HashSet<Tbl_EducationDetails>();
+            this.Tbl_EmployerProfile = new HashSet<Tbl_EmployerProfile>();
+            this.Tbl_ExperienceDetails = new HashSet<Tbl_ExperienceDetails>();
+            this.Tbl_Job = new HashSet<Tbl_Job>();
+            this.Tbl_JobActivity = new HashSet<Tbl_JobActivity>();
+            this.Tbl_SeekerProfile = new HashSet<Tbl_SeekerProfile>();
+            this.Tbl_SeekerSkill = new HashSet<Tbl_SeekerSkill>();
+            this.Tbl_UserSocialProfile = new HashSet<Tbl_UserSocialProfile>();
+        }
+    
         public int UserID { get; set; }
         public Nullable<int> RoleID { get; set; }
         public string UserEmail { get; set; }
@@ -24,5 +37,23 @@ namespace WebApiDAL.Model
         public Nullable<bool> SmsActive { get; set; }
         public Nullable<bool> EmailActive { get; set; }
         public Nullable<bool> AccountActive { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_EducationDetails> Tbl_EducationDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_EmployerProfile> Tbl_EmployerProfile { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_ExperienceDetails> Tbl_ExperienceDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_Job> Tbl_Job { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_JobActivity> Tbl_JobActivity { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_SeekerProfile> Tbl_SeekerProfile { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_SeekerSkill> Tbl_SeekerSkill { get; set; }
+        public virtual Tbl_UserRole Tbl_UserRole { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_UserSocialProfile> Tbl_UserSocialProfile { get; set; }
     }
 }
