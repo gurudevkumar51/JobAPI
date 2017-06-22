@@ -14,15 +14,11 @@ namespace WebApiDAL.Model
     
     public partial class Tbl_EmployerProfile
     {
-        public int ID { get; set; }
-        public Nullable<int> UserID { get; set; }
+        public int UserID { get; set; }
         public Nullable<int> IndustryId { get; set; }
         public string EmployerName { get; set; }
         public string CompanyDescription { get; set; }
         public Nullable<System.DateTime> EstablishmentDate { get; set; }
         public string WebsiteURL { get; set; }
-    
-        public virtual Tbl_EmployerIndustry Tbl_EmployerIndustry { get; set; }
-        public virtual Tbl_User Tbl_User { get; set; }
     }
 }

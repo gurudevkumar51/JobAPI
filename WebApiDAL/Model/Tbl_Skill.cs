@@ -14,19 +14,7 @@ namespace WebApiDAL.Model
     
     public partial class Tbl_Skill
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tbl_Skill()
-        {
-            this.Tbl_JobSkill = new HashSet<Tbl_JobSkill>();
-            this.Tbl_SeekerSkill = new HashSet<Tbl_SeekerSkill>();
-        }
-    
         public int ID { get; set; }
         public string Skill { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_JobSkill> Tbl_JobSkill { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_SeekerSkill> Tbl_SeekerSkill { get; set; }
     }
 }

@@ -14,16 +14,7 @@ namespace WebApiDAL.Model
     
     public partial class Tbl_UserRole
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tbl_UserRole()
-        {
-            this.Tbl_User = new HashSet<Tbl_User>();
-        }
-    
         public int ID { get; set; }
         public string Role { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_User> Tbl_User { get; set; }
     }
 }

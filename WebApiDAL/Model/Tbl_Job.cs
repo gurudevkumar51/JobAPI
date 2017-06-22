@@ -14,13 +14,6 @@ namespace WebApiDAL.Model
     
     public partial class Tbl_Job
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tbl_Job()
-        {
-            this.Tbl_JobActivity = new HashSet<Tbl_JobActivity>();
-            this.Tbl_JobSkill = new HashSet<Tbl_JobSkill>();
-        }
-    
         public int ID { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> JobTypeID { get; set; }
@@ -31,12 +24,5 @@ namespace WebApiDAL.Model
         public Nullable<decimal> MaxExperienceRequired { get; set; }
         public Nullable<System.DateTime> ExpireDate { get; set; }
         public Nullable<bool> IsActive { get; set; }
-    
-        public virtual Tbl_JobType Tbl_JobType { get; set; }
-        public virtual Tbl_User Tbl_User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_JobActivity> Tbl_JobActivity { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_JobSkill> Tbl_JobSkill { get; set; }
     }
 }
