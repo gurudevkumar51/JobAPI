@@ -14,7 +14,16 @@ namespace WebApiDAL.Model
     
     public partial class Tbl_Currency
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tbl_Currency()
+        {
+            this.Tbl_SeekerProfile = new HashSet<Tbl_SeekerProfile>();
+        }
+    
         public int ID { get; set; }
         public string Currency { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_SeekerProfile> Tbl_SeekerProfile { get; set; }
     }
 }

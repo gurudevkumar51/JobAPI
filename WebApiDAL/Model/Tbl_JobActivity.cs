@@ -19,5 +19,8 @@ namespace WebApiDAL.Model
         public Nullable<int> JobId { get; set; }
         public string Activity { get; set; }
         public Nullable<System.DateTime> ActivityDate { get; set; }
+    
+        public virtual Tbl_Job Tbl_Job { get; set; }
+        public virtual Tbl_User Tbl_User { get; set; }
     }
 }

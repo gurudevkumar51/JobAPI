@@ -22,5 +22,7 @@ namespace WebApiDAL.Model
         public Nullable<System.DateTime> JoinDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<bool> Is_CurrentJob { get; set; }
+    
+        public virtual Tbl_User Tbl_User { get; set; }
     }
 }
