@@ -19,5 +19,8 @@ namespace WebApiDAL.Model
         public Nullable<int> SocialMediaID { get; set; }
         public string Activity { get; set; }
         public string ProfileURL { get; set; }
+    
+        public virtual Tbl_SocialMedia Tbl_SocialMedia { get; set; }
+        public virtual Tbl_User Tbl_User { get; set; }
     }
 }

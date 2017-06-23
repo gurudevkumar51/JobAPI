@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using WebApiDAL.DataAccess;
 using WebApiDAL.Entity;
+using WebApiDAL.Model;
 using WebApiDAL.ServiceManager;
 
 namespace WebApi.Controllers
@@ -22,7 +23,7 @@ namespace WebApi.Controllers
         [Authorize(Roles = "employer")]
         [HttpPost]
         [Route("api/Job/Add")]
-        public IHttpActionResult AddJob(Job job)
+        public IHttpActionResult AddJob(Tbl_Job job)
         {            
             var flag = jb.PostJob(job, out Ermsg);
             if (flag)
@@ -38,9 +39,9 @@ namespace WebApi.Controllers
         [Authorize(Roles = "employer")]
         [HttpPost]
         [Route("api/Job/Delete")]
-        public IHttpActionResult DeleteJob(JobActivity jobactivity)
-        {            
-            var flag = jb.DeleteJob(jobactivity, out Ermsg);
+        public IHttpActionResult DeleteJob(int JbID, Tbl_JobActivity jobactivity)
+        {
+            var flag = jb.DeleteJob(JbID, jobactivity, out Ermsg);
             if (flag)
             {
                 return Json(new { success = true, responseText = "Job deleted succesfully", responseCode = HttpStatusCode.Created });
@@ -54,7 +55,7 @@ namespace WebApi.Controllers
         [Authorize(Roles = "employer")]
         [HttpPost]
         [Route("api/Job/Edit")]
-        public IHttpActionResult UpdateJob(Job job, JobActivity jobactivity)
+        public IHttpActionResult UpdateJob(Tbl_Job job, Tbl_JobActivity jobactivity)
         {
             var flag = jb.UpdateJob(job, jobactivity, out Ermsg);
             if (flag)
@@ -70,7 +71,7 @@ namespace WebApi.Controllers
         [Authorize(Roles = "seeker")]
         [HttpPost]
         [Route("api/Job/Apply")]
-        public IHttpActionResult ApplyJob(JobActivity jbactivity)
+        public IHttpActionResult ApplyJob(Tbl_JobActivity jbactivity)
         {
             var flag = jb.ApplyJob(jbactivity, out Ermsg);
             if (flag)

@@ -5,54 +5,121 @@ using System.Text;
 using System.Threading.Tasks;
 using WebApiDAL.Entity;
 using WebApiDAL.ServiceManager;
+using WebApiDAL.Model;
+using System.Data.Entity;
 
 namespace WebApiDAL.DataAccess
 {
-    public class AccountRepository : BaseRepository, IAccount
+    public class AccountRepository : /*BaseRepository,*/ IAccount
     {
-        public Boolean RegisterUser(User usr, out string Ermsg)
+        private WebphonixJobsDBEntities db = new WebphonixJobsDBEntities();
+
+        //Adding new User
+        public Boolean RegisterUser(Tbl_User usr, out string Ermsg)
         {
             Ermsg = "";
-            return true;
+            try
+            {
+                db.Tbl_User.Add(usr);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Ermsg = ex.Message;
+                return false;
+            }            
         }
 
+        //Change password if user exist & old password is correct 
         public Boolean ChangePassword(ChangePassword chp, string Eml, out string Ermsg)
         {
             Ermsg = "";
-            return true;
+            try
+            {
+                var usr = db.Tbl_User.Where(u => u.UserEmail == Eml).FirstOrDefault();
+                if (usr == null)
+                {
+                    Ermsg = "User doesn't exit";
+                }
+                else
+                {
+                    if(usr.PassWord == chp.Password)
+                    {
+                        var user = new Tbl_User() { UserID = usr.UserID, PassWord = chp.NewPassword };
+                        try
+                        {
+                            db.Tbl_User.Attach(user);
+                            db.Entry(user).Property(x => x.AccountActive).IsModified = true;
+                            db.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            Ermsg = ex.Message;
+                        }
+                    }
+                    else
+                    {
+                        Ermsg = "Old password incorrect";
+                    }
+                }
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Ermsg = ex.Message;
+                return false;
+            }
         }
 
-        public User Login(Login lgn, out string ErrMsg)
+        //Check Login
+        public Tbl_User Login(Login lgn, out string ErrMsg)
         {
             ErrMsg = "";
-            var pp = AllUserList().FirstOrDefault();
-            return pp;
+            return db.Tbl_User.Where(p => p.UserEmail == lgn.EmailId && p.PassWord == lgn.Password).FirstOrDefault();             
         }
 
-        public Boolean UpdateUser(User usr, out string Ermsg)
+        //Update User Data
+        public Boolean UpdateUser(Tbl_User usr, out string Ermsg)
         {
             Ermsg = "";
-            return true;
+            try
+            {
+                db.Entry(usr).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Ermsg = ex.Message;
+                return false;
+            }            
         }
 
+        //Deactivate Account
         public Boolean DeactivateAccount(int UsrID, out string ErMsg)
         {
             ErMsg = "";
-            return true;
+            var user = new Tbl_User() { UserID = UsrID, AccountActive = false };
+            try
+            {
+                db.Tbl_User.Attach(user);
+                db.Entry(user).Property(x => x.AccountActive).IsModified = true;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ErMsg = ex.Message;
+                return false;
+            }            
         }
 
-        public List<User> AllUserList()
-        {
-            List<User> users = new List<User>();
-            User u = new User();
-            u.ID = 1;
-            u.Email = "gurudevkumar51@hotmail.com";
-            u.Password = "123";
-            u.Role = "admin";
-            u.PhoneNumber = "1234567896";
-
-            users.Add(u);
-            return users;
+        //List of All registered users
+        public List<Tbl_User> AllUserList()
+        {   
+            return db.Tbl_User.ToList();
         }
     }
 }
