@@ -17,8 +17,5 @@ namespace WebApiDAL.Model
         public int ID { get; set; }
         public Nullable<int> JobID { get; set; }
         public Nullable<int> SkillId { get; set; }
-    
-        public virtual Tbl_Job Tbl_Job { get; set; }
-        public virtual Tbl_Skill Tbl_Skill { get; set; }
     }
 }

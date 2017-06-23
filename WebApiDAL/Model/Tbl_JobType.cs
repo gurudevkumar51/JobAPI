@@ -14,16 +14,7 @@ namespace WebApiDAL.Model
     
     public partial class Tbl_JobType
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tbl_JobType()
-        {
-            this.Tbl_Job = new HashSet<Tbl_Job>();
-        }
-    
         public int ID { get; set; }
         public string JobType { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_Job> Tbl_Job { get; set; }
     }
 }

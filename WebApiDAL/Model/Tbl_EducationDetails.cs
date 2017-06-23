@@ -24,7 +24,5 @@ namespace WebApiDAL.Model
         public Nullable<decimal> Percantage { get; set; }
         public Nullable<decimal> CGPA { get; set; }
         public Nullable<int> UserID { get; set; }
-    
-        public virtual Tbl_User Tbl_User { get; set; }
     }
 }

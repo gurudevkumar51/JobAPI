@@ -36,10 +36,9 @@
         </EntityType>
         <EntityType Name="Tbl_EmployerProfile">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="UserID" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="IndustryId" Type="int" />
           <Property Name="EmployerName" Type="varchar" MaxLength="50" />
           <Property Name="CompanyDescription" Type="varchar(max)" />
@@ -101,16 +100,15 @@
         </EntityType>
         <EntityType Name="Tbl_SeekerProfile">
           <Key>
-            <PropertyRef Name="SeekerProfileID" />
+            <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="SeekerProfileID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="100" />
           <Property Name="LastName" Type="varchar" MaxLength="100" />
           <Property Name="CurrentSalary" Type="decimal" Precision="20" Scale="2" />
           <Property Name="ExpectedSalary" Type="decimal" Precision="20" Scale="2" />
           <Property Name="Introduction" Type="varchar(max)" />
-          <Property Name="CurrencyID" Type="int" />
+          <Property Name="CurrencyID1" Type="int" />
           <Property Name="ResumePath" Type="varchar(max)" />
           <Property Name="Dob" Type="datetime" />
           <Property Name="Gender" Type="varchar" MaxLength="10" />
@@ -177,210 +175,6 @@
           <Property Name="Activity" Type="varchar(max)" />
           <Property Name="ProfileURL" Type="varchar(max)" />
         </EntityType>
-        <Association Name="FK_Tbl_EducationDetails_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_EducationDetails" Type="Self.Tbl_EducationDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_EducationDetails">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_EmployerProfile_Tbl_EmployerIndustry">
-          <End Role="Tbl_EmployerIndustry" Type="Self.Tbl_EmployerIndustry" Multiplicity="0..1" />
-          <End Role="Tbl_EmployerProfile" Type="Self.Tbl_EmployerProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_EmployerIndustry">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_EmployerProfile">
-              <PropertyRef Name="IndustryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_EmployerProfile_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_EmployerProfile" Type="Self.Tbl_EmployerProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_EmployerProfile">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_ExperienceDetails_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_ExperienceDetails" Type="Self.Tbl_ExperienceDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_ExperienceDetails">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_Job_Tbl_JobType">
-          <End Role="Tbl_JobType" Type="Self.Tbl_JobType" Multiplicity="0..1" />
-          <End Role="Tbl_Job" Type="Self.Tbl_Job" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_JobType">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_Job">
-              <PropertyRef Name="JobTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_Job_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_Job" Type="Self.Tbl_Job" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_Job">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_JobActivity_Tbl_Job">
-          <End Role="Tbl_Job" Type="Self.Tbl_Job" Multiplicity="0..1" />
-          <End Role="Tbl_JobActivity" Type="Self.Tbl_JobActivity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Job">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_JobActivity">
-              <PropertyRef Name="JobId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_JobActivity_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_JobActivity" Type="Self.Tbl_JobActivity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_JobActivity">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_JobSkill_Tbl_Job">
-          <End Role="Tbl_Job" Type="Self.Tbl_Job" Multiplicity="0..1" />
-          <End Role="Tbl_JobSkill" Type="Self.Tbl_JobSkill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Job">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_JobSkill">
-              <PropertyRef Name="JobID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_JobSkill_Tbl_Skill">
-          <End Role="Tbl_Skill" Type="Self.Tbl_Skill" Multiplicity="0..1" />
-          <End Role="Tbl_JobSkill" Type="Self.Tbl_JobSkill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Skill">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_JobSkill">
-              <PropertyRef Name="SkillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_SeekerProfile_Tbl_Currency">
-          <End Role="Tbl_Currency" Type="Self.Tbl_Currency" Multiplicity="0..1" />
-          <End Role="Tbl_SeekerProfile" Type="Self.Tbl_SeekerProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Currency">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_SeekerProfile">
-              <PropertyRef Name="CurrencyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_SeekerProfile_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="1" />
-          <End Role="Tbl_SeekerProfile" Type="Self.Tbl_SeekerProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_SeekerProfile">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_SeekerSkill_Tbl_Skill">
-          <End Role="Tbl_Skill" Type="Self.Tbl_Skill" Multiplicity="0..1" />
-          <End Role="Tbl_SeekerSkill" Type="Self.Tbl_SeekerSkill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Skill">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_SeekerSkill">
-              <PropertyRef Name="SkillID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_SeekerSkill_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_SeekerSkill" Type="Self.Tbl_SeekerSkill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_SeekerSkill">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_User_Tbl_UserRole">
-          <End Role="Tbl_UserRole" Type="Self.Tbl_UserRole" Multiplicity="0..1" />
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_UserRole">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_User">
-              <PropertyRef Name="RoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_UserSocialProfile_Tbl_SocialMedia">
-          <End Role="Tbl_SocialMedia" Type="Self.Tbl_SocialMedia" Multiplicity="0..1" />
-          <End Role="Tbl_UserSocialProfile" Type="Self.Tbl_UserSocialProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_SocialMedia">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_UserSocialProfile">
-              <PropertyRef Name="SocialMediaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_UserSocialProfile_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_UserSocialProfile" Type="Self.Tbl_UserSocialProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_UserSocialProfile">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="WebphonixJobsDBModelStoreContainer">
           <EntitySet Name="Tbl_Currency" EntityType="Self.Tbl_Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_EducationDetails" EntityType="Self.Tbl_EducationDetails" Schema="dbo" store:Type="Tables" />
@@ -399,74 +193,6 @@
           <EntitySet Name="Tbl_UserLog" EntityType="Self.Tbl_UserLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_UserRole" EntityType="Self.Tbl_UserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_UserSocialProfile" EntityType="Self.Tbl_UserSocialProfile" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Tbl_EducationDetails_Tbl_User" Association="Self.FK_Tbl_EducationDetails_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_EducationDetails" EntitySet="Tbl_EducationDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_EmployerProfile_Tbl_EmployerIndustry" Association="Self.FK_Tbl_EmployerProfile_Tbl_EmployerIndustry">
-            <End Role="Tbl_EmployerIndustry" EntitySet="Tbl_EmployerIndustry" />
-            <End Role="Tbl_EmployerProfile" EntitySet="Tbl_EmployerProfile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_EmployerProfile_Tbl_User" Association="Self.FK_Tbl_EmployerProfile_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_EmployerProfile" EntitySet="Tbl_EmployerProfile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_ExperienceDetails_Tbl_User" Association="Self.FK_Tbl_ExperienceDetails_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_ExperienceDetails" EntitySet="Tbl_ExperienceDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_Job_Tbl_JobType" Association="Self.FK_Tbl_Job_Tbl_JobType">
-            <End Role="Tbl_JobType" EntitySet="Tbl_JobType" />
-            <End Role="Tbl_Job" EntitySet="Tbl_Job" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_Job_Tbl_User" Association="Self.FK_Tbl_Job_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_Job" EntitySet="Tbl_Job" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_JobActivity_Tbl_Job" Association="Self.FK_Tbl_JobActivity_Tbl_Job">
-            <End Role="Tbl_Job" EntitySet="Tbl_Job" />
-            <End Role="Tbl_JobActivity" EntitySet="Tbl_JobActivity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_JobActivity_Tbl_User" Association="Self.FK_Tbl_JobActivity_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_JobActivity" EntitySet="Tbl_JobActivity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_JobSkill_Tbl_Job" Association="Self.FK_Tbl_JobSkill_Tbl_Job">
-            <End Role="Tbl_Job" EntitySet="Tbl_Job" />
-            <End Role="Tbl_JobSkill" EntitySet="Tbl_JobSkill" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_JobSkill_Tbl_Skill" Association="Self.FK_Tbl_JobSkill_Tbl_Skill">
-            <End Role="Tbl_Skill" EntitySet="Tbl_Skill" />
-            <End Role="Tbl_JobSkill" EntitySet="Tbl_JobSkill" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_SeekerProfile_Tbl_Currency" Association="Self.FK_Tbl_SeekerProfile_Tbl_Currency">
-            <End Role="Tbl_Currency" EntitySet="Tbl_Currency" />
-            <End Role="Tbl_SeekerProfile" EntitySet="Tbl_SeekerProfile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_SeekerProfile_Tbl_User" Association="Self.FK_Tbl_SeekerProfile_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_SeekerProfile" EntitySet="Tbl_SeekerProfile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_SeekerSkill_Tbl_Skill" Association="Self.FK_Tbl_SeekerSkill_Tbl_Skill">
-            <End Role="Tbl_Skill" EntitySet="Tbl_Skill" />
-            <End Role="Tbl_SeekerSkill" EntitySet="Tbl_SeekerSkill" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_SeekerSkill_Tbl_User" Association="Self.FK_Tbl_SeekerSkill_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_SeekerSkill" EntitySet="Tbl_SeekerSkill" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_User_Tbl_UserRole" Association="Self.FK_Tbl_User_Tbl_UserRole">
-            <End Role="Tbl_UserRole" EntitySet="Tbl_UserRole" />
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_UserSocialProfile_Tbl_SocialMedia" Association="Self.FK_Tbl_UserSocialProfile_Tbl_SocialMedia">
-            <End Role="Tbl_SocialMedia" EntitySet="Tbl_SocialMedia" />
-            <End Role="Tbl_UserSocialProfile" EntitySet="Tbl_UserSocialProfile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_UserSocialProfile_Tbl_User" Association="Self.FK_Tbl_UserSocialProfile_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_UserSocialProfile" EntitySet="Tbl_UserSocialProfile" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -479,7 +205,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Currency" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tbl_SeekerProfile" Relationship="Self.FK_Tbl_SeekerProfile_Tbl_Currency" FromRole="Tbl_Currency" ToRole="Tbl_SeekerProfile" />
         </EntityType>
         <EntityType Name="Tbl_EducationDetails">
           <Key>
@@ -495,7 +220,6 @@
           <Property Name="Percantage" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="CGPA" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="UserID" Type="Int32" />
-          <NavigationProperty Name="Tbl_User" Relationship="Self.FK_Tbl_EducationDetails_Tbl_User" FromRole="Tbl_EducationDetails" ToRole="Tbl_User" />
         </EntityType>
         <EntityType Name="Tbl_EmployerIndustry">
           <Key>
@@ -503,21 +227,17 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Industry" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tbl_EmployerProfile" Relationship="Self.FK_Tbl_EmployerProfile_Tbl_EmployerIndustry" FromRole="Tbl_EmployerIndustry" ToRole="Tbl_EmployerProfile" />
         </EntityType>
         <EntityType Name="Tbl_EmployerProfile">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="IndustryId" Type="Int32" />
           <Property Name="EmployerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CompanyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="EstablishmentDate" Type="DateTime" Precision="3" />
           <Property Name="WebsiteURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tbl_EmployerIndustry" Relationship="Self.FK_Tbl_EmployerProfile_Tbl_EmployerIndustry" FromRole="Tbl_EmployerProfile" ToRole="Tbl_EmployerIndustry" />
-          <NavigationProperty Name="Tbl_User" Relationship="Self.FK_Tbl_EmployerProfile_Tbl_User" FromRole="Tbl_EmployerProfile" ToRole="Tbl_User" />
         </EntityType>
         <EntityType Name="Tbl_ExperienceDetails">
           <Key>
@@ -531,7 +251,6 @@
           <Property Name="JoinDate" Type="DateTime" Precision="3" />
           <Property Name="EndDate" Type="DateTime" Precision="3" />
           <Property Name="Is_CurrentJob" Type="Boolean" />
-          <NavigationProperty Name="Tbl_User" Relationship="Self.FK_Tbl_ExperienceDetails_Tbl_User" FromRole="Tbl_ExperienceDetails" ToRole="Tbl_User" />
         </EntityType>
         <EntityType Name="Tbl_Job">
           <Key>
@@ -547,10 +266,6 @@
           <Property Name="MaxExperienceRequired" Type="Decimal" Precision="2" Scale="1" />
           <Property Name="ExpireDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="Tbl_JobType" Relationship="Self.FK_Tbl_Job_Tbl_JobType" FromRole="Tbl_Job" ToRole="Tbl_JobType" />
-          <NavigationProperty Name="Tbl_User" Relationship="Self.FK_Tbl_Job_Tbl_User" FromRole="Tbl_Job" ToRole="Tbl_User" />
-          <NavigationProperty Name="Tbl_JobActivity" Relationship="Self.FK_Tbl_JobActivity_Tbl_Job" FromRole="Tbl_Job" ToRole="Tbl_JobActivity" />
-          <NavigationProperty Name="Tbl_JobSkill" Relationship="Self.FK_Tbl_JobSkill_Tbl_Job" FromRole="Tbl_Job" ToRole="Tbl_JobSkill" />
         </EntityType>
         <EntityType Name="Tbl_JobActivity">
           <Key>
@@ -561,8 +276,6 @@
           <Property Name="JobId" Type="Int32" />
           <Property Name="Activity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ActivityDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Tbl_Job" Relationship="Self.FK_Tbl_JobActivity_Tbl_Job" FromRole="Tbl_JobActivity" ToRole="Tbl_Job" />
-          <NavigationProperty Name="Tbl_User" Relationship="Self.FK_Tbl_JobActivity_Tbl_User" FromRole="Tbl_JobActivity" ToRole="Tbl_User" />
         </EntityType>
         <EntityType Name="Tbl_JobSkill">
           <Key>
@@ -571,8 +284,6 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="JobID" Type="Int32" />
           <Property Name="SkillId" Type="Int32" />
-          <NavigationProperty Name="Tbl_Job" Relationship="Self.FK_Tbl_JobSkill_Tbl_Job" FromRole="Tbl_JobSkill" ToRole="Tbl_Job" />
-          <NavigationProperty Name="Tbl_Skill" Relationship="Self.FK_Tbl_JobSkill_Tbl_Skill" FromRole="Tbl_JobSkill" ToRole="Tbl_Skill" />
         </EntityType>
         <EntityType Name="Tbl_JobType">
           <Key>
@@ -580,25 +291,21 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="JobType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tbl_Job" Relationship="Self.FK_Tbl_Job_Tbl_JobType" FromRole="Tbl_JobType" ToRole="Tbl_Job" />
         </EntityType>
         <EntityType Name="Tbl_SeekerProfile">
           <Key>
-            <PropertyRef Name="SeekerProfileID" />
+            <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="SeekerProfileID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CurrentSalary" Type="Decimal" Precision="20" Scale="2" />
           <Property Name="ExpectedSalary" Type="Decimal" Precision="20" Scale="2" />
           <Property Name="Introduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CurrencyID" Type="Int32" />
+          <Property Name="CurrencyID1" Type="Int32" />
           <Property Name="ResumePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Dob" Type="DateTime" Precision="3" />
           <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tbl_Currency" Relationship="Self.FK_Tbl_SeekerProfile_Tbl_Currency" FromRole="Tbl_SeekerProfile" ToRole="Tbl_Currency" />
-          <NavigationProperty Name="Tbl_User" Relationship="Self.FK_Tbl_SeekerProfile_Tbl_User" FromRole="Tbl_SeekerProfile" ToRole="Tbl_User" />
         </EntityType>
         <EntityType Name="Tbl_SeekerSkill">
           <Key>
@@ -607,8 +314,6 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Int32" />
           <Property Name="SkillID" Type="Int32" />
-          <NavigationProperty Name="Tbl_Skill" Relationship="Self.FK_Tbl_SeekerSkill_Tbl_Skill" FromRole="Tbl_SeekerSkill" ToRole="Tbl_Skill" />
-          <NavigationProperty Name="Tbl_User" Relationship="Self.FK_Tbl_SeekerSkill_Tbl_User" FromRole="Tbl_SeekerSkill" ToRole="Tbl_User" />
         </EntityType>
         <EntityType Name="Tbl_Skill">
           <Key>
@@ -616,8 +321,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Skill" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tbl_JobSkill" Relationship="Self.FK_Tbl_JobSkill_Tbl_Skill" FromRole="Tbl_Skill" ToRole="Tbl_JobSkill" />
-          <NavigationProperty Name="Tbl_SeekerSkill" Relationship="Self.FK_Tbl_SeekerSkill_Tbl_Skill" FromRole="Tbl_Skill" ToRole="Tbl_SeekerSkill" />
         </EntityType>
         <EntityType Name="Tbl_SocialMedia">
           <Key>
@@ -625,7 +328,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SocialMedia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tbl_UserSocialProfile" Relationship="Self.FK_Tbl_UserSocialProfile_Tbl_SocialMedia" FromRole="Tbl_SocialMedia" ToRole="Tbl_UserSocialProfile" />
         </EntityType>
         <EntityType Name="Tbl_User">
           <Key>
@@ -641,15 +343,6 @@
           <Property Name="SmsActive" Type="Boolean" />
           <Property Name="EmailActive" Type="Boolean" />
           <Property Name="AccountActive" Type="Boolean" />
-          <NavigationProperty Name="Tbl_EducationDetails" Relationship="Self.FK_Tbl_EducationDetails_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_EducationDetails" />
-          <NavigationProperty Name="Tbl_EmployerProfile" Relationship="Self.FK_Tbl_EmployerProfile_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_EmployerProfile" />
-          <NavigationProperty Name="Tbl_ExperienceDetails" Relationship="Self.FK_Tbl_ExperienceDetails_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_ExperienceDetails" />
-          <NavigationProperty Name="Tbl_Job" Relationship="Self.FK_Tbl_Job_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_Job" />
-          <NavigationProperty Name="Tbl_JobActivity" Relationship="Self.FK_Tbl_JobActivity_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_JobActivity" />
-          <NavigationProperty Name="Tbl_SeekerProfile" Relationship="Self.FK_Tbl_SeekerProfile_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_SeekerProfile" />
-          <NavigationProperty Name="Tbl_SeekerSkill" Relationship="Self.FK_Tbl_SeekerSkill_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_SeekerSkill" />
-          <NavigationProperty Name="Tbl_UserRole" Relationship="Self.FK_Tbl_User_Tbl_UserRole" FromRole="Tbl_User" ToRole="Tbl_UserRole" />
-          <NavigationProperty Name="Tbl_UserSocialProfile" Relationship="Self.FK_Tbl_UserSocialProfile_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_UserSocialProfile" />
         </EntityType>
         <EntityType Name="Tbl_UserLog">
           <Key>
@@ -665,7 +358,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Role" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tbl_User" Relationship="Self.FK_Tbl_User_Tbl_UserRole" FromRole="Tbl_UserRole" ToRole="Tbl_User" />
         </EntityType>
         <EntityType Name="Tbl_UserSocialProfile">
           <Key>
@@ -676,213 +368,7 @@
           <Property Name="SocialMediaID" Type="Int32" />
           <Property Name="Activity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ProfileURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tbl_SocialMedia" Relationship="Self.FK_Tbl_UserSocialProfile_Tbl_SocialMedia" FromRole="Tbl_UserSocialProfile" ToRole="Tbl_SocialMedia" />
-          <NavigationProperty Name="Tbl_User" Relationship="Self.FK_Tbl_UserSocialProfile_Tbl_User" FromRole="Tbl_UserSocialProfile" ToRole="Tbl_User" />
         </EntityType>
-        <Association Name="FK_Tbl_SeekerProfile_Tbl_Currency">
-          <End Role="Tbl_Currency" Type="Self.Tbl_Currency" Multiplicity="0..1" />
-          <End Role="Tbl_SeekerProfile" Type="Self.Tbl_SeekerProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Currency">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_SeekerProfile">
-              <PropertyRef Name="CurrencyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_EducationDetails_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_EducationDetails" Type="Self.Tbl_EducationDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_EducationDetails">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_EmployerProfile_Tbl_EmployerIndustry">
-          <End Role="Tbl_EmployerIndustry" Type="Self.Tbl_EmployerIndustry" Multiplicity="0..1" />
-          <End Role="Tbl_EmployerProfile" Type="Self.Tbl_EmployerProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_EmployerIndustry">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_EmployerProfile">
-              <PropertyRef Name="IndustryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_EmployerProfile_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_EmployerProfile" Type="Self.Tbl_EmployerProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_EmployerProfile">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_ExperienceDetails_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_ExperienceDetails" Type="Self.Tbl_ExperienceDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_ExperienceDetails">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_Job_Tbl_JobType">
-          <End Role="Tbl_JobType" Type="Self.Tbl_JobType" Multiplicity="0..1" />
-          <End Role="Tbl_Job" Type="Self.Tbl_Job" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_JobType">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_Job">
-              <PropertyRef Name="JobTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_Job_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_Job" Type="Self.Tbl_Job" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_Job">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_JobActivity_Tbl_Job">
-          <End Role="Tbl_Job" Type="Self.Tbl_Job" Multiplicity="0..1" />
-          <End Role="Tbl_JobActivity" Type="Self.Tbl_JobActivity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Job">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_JobActivity">
-              <PropertyRef Name="JobId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_JobSkill_Tbl_Job">
-          <End Role="Tbl_Job" Type="Self.Tbl_Job" Multiplicity="0..1" />
-          <End Role="Tbl_JobSkill" Type="Self.Tbl_JobSkill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Job">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_JobSkill">
-              <PropertyRef Name="JobID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_JobActivity_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_JobActivity" Type="Self.Tbl_JobActivity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_JobActivity">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_JobSkill_Tbl_Skill">
-          <End Role="Tbl_Skill" Type="Self.Tbl_Skill" Multiplicity="0..1" />
-          <End Role="Tbl_JobSkill" Type="Self.Tbl_JobSkill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Skill">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_JobSkill">
-              <PropertyRef Name="SkillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_SeekerProfile_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="1" />
-          <End Role="Tbl_SeekerProfile" Type="Self.Tbl_SeekerProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_SeekerProfile">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_SeekerSkill_Tbl_Skill">
-          <End Role="Tbl_Skill" Type="Self.Tbl_Skill" Multiplicity="0..1" />
-          <End Role="Tbl_SeekerSkill" Type="Self.Tbl_SeekerSkill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Skill">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_SeekerSkill">
-              <PropertyRef Name="SkillID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_SeekerSkill_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_SeekerSkill" Type="Self.Tbl_SeekerSkill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_SeekerSkill">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_UserSocialProfile_Tbl_SocialMedia">
-          <End Role="Tbl_SocialMedia" Type="Self.Tbl_SocialMedia" Multiplicity="0..1" />
-          <End Role="Tbl_UserSocialProfile" Type="Self.Tbl_UserSocialProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_SocialMedia">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_UserSocialProfile">
-              <PropertyRef Name="SocialMediaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_User_Tbl_UserRole">
-          <End Role="Tbl_UserRole" Type="Self.Tbl_UserRole" Multiplicity="0..1" />
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_UserRole">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tbl_User">
-              <PropertyRef Name="RoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_UserSocialProfile_Tbl_User">
-          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
-          <End Role="Tbl_UserSocialProfile" Type="Self.Tbl_UserSocialProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Tbl_UserSocialProfile">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="WebphonixJobsDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Tbl_Currency" EntityType="Self.Tbl_Currency" />
           <EntitySet Name="Tbl_EducationDetails" EntityType="Self.Tbl_EducationDetails" />
@@ -901,74 +387,6 @@
           <EntitySet Name="Tbl_UserLog" EntityType="Self.Tbl_UserLog" />
           <EntitySet Name="Tbl_UserRole" EntityType="Self.Tbl_UserRole" />
           <EntitySet Name="Tbl_UserSocialProfile" EntityType="Self.Tbl_UserSocialProfile" />
-          <AssociationSet Name="FK_Tbl_SeekerProfile_Tbl_Currency" Association="Self.FK_Tbl_SeekerProfile_Tbl_Currency">
-            <End Role="Tbl_Currency" EntitySet="Tbl_Currency" />
-            <End Role="Tbl_SeekerProfile" EntitySet="Tbl_SeekerProfile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_EducationDetails_Tbl_User" Association="Self.FK_Tbl_EducationDetails_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_EducationDetails" EntitySet="Tbl_EducationDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_EmployerProfile_Tbl_EmployerIndustry" Association="Self.FK_Tbl_EmployerProfile_Tbl_EmployerIndustry">
-            <End Role="Tbl_EmployerIndustry" EntitySet="Tbl_EmployerIndustry" />
-            <End Role="Tbl_EmployerProfile" EntitySet="Tbl_EmployerProfile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_EmployerProfile_Tbl_User" Association="Self.FK_Tbl_EmployerProfile_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_EmployerProfile" EntitySet="Tbl_EmployerProfile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_ExperienceDetails_Tbl_User" Association="Self.FK_Tbl_ExperienceDetails_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_ExperienceDetails" EntitySet="Tbl_ExperienceDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_Job_Tbl_JobType" Association="Self.FK_Tbl_Job_Tbl_JobType">
-            <End Role="Tbl_JobType" EntitySet="Tbl_JobType" />
-            <End Role="Tbl_Job" EntitySet="Tbl_Job" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_Job_Tbl_User" Association="Self.FK_Tbl_Job_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_Job" EntitySet="Tbl_Job" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_JobActivity_Tbl_Job" Association="Self.FK_Tbl_JobActivity_Tbl_Job">
-            <End Role="Tbl_Job" EntitySet="Tbl_Job" />
-            <End Role="Tbl_JobActivity" EntitySet="Tbl_JobActivity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_JobSkill_Tbl_Job" Association="Self.FK_Tbl_JobSkill_Tbl_Job">
-            <End Role="Tbl_Job" EntitySet="Tbl_Job" />
-            <End Role="Tbl_JobSkill" EntitySet="Tbl_JobSkill" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_JobActivity_Tbl_User" Association="Self.FK_Tbl_JobActivity_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_JobActivity" EntitySet="Tbl_JobActivity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_JobSkill_Tbl_Skill" Association="Self.FK_Tbl_JobSkill_Tbl_Skill">
-            <End Role="Tbl_Skill" EntitySet="Tbl_Skill" />
-            <End Role="Tbl_JobSkill" EntitySet="Tbl_JobSkill" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_SeekerProfile_Tbl_User" Association="Self.FK_Tbl_SeekerProfile_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_SeekerProfile" EntitySet="Tbl_SeekerProfile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_SeekerSkill_Tbl_Skill" Association="Self.FK_Tbl_SeekerSkill_Tbl_Skill">
-            <End Role="Tbl_Skill" EntitySet="Tbl_Skill" />
-            <End Role="Tbl_SeekerSkill" EntitySet="Tbl_SeekerSkill" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_SeekerSkill_Tbl_User" Association="Self.FK_Tbl_SeekerSkill_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_SeekerSkill" EntitySet="Tbl_SeekerSkill" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_UserSocialProfile_Tbl_SocialMedia" Association="Self.FK_Tbl_UserSocialProfile_Tbl_SocialMedia">
-            <End Role="Tbl_SocialMedia" EntitySet="Tbl_SocialMedia" />
-            <End Role="Tbl_UserSocialProfile" EntitySet="Tbl_UserSocialProfile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_User_Tbl_UserRole" Association="Self.FK_Tbl_User_Tbl_UserRole">
-            <End Role="Tbl_UserRole" EntitySet="Tbl_UserRole" />
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_UserSocialProfile_Tbl_User" Association="Self.FK_Tbl_UserSocialProfile_Tbl_User">
-            <End Role="Tbl_User" EntitySet="Tbl_User" />
-            <End Role="Tbl_UserSocialProfile" EntitySet="Tbl_UserSocialProfile" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1011,7 +429,6 @@
           <EntitySetMapping Name="Tbl_EmployerProfile">
             <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_EmployerProfile">
               <MappingFragment StoreEntitySet="Tbl_EmployerProfile">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="IndustryId" ColumnName="IndustryId" />
                 <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
@@ -1082,14 +499,13 @@
           <EntitySetMapping Name="Tbl_SeekerProfile">
             <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_SeekerProfile">
               <MappingFragment StoreEntitySet="Tbl_SeekerProfile">
-                <ScalarProperty Name="SeekerProfileID" ColumnName="SeekerProfileID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="CurrentSalary" ColumnName="CurrentSalary" />
                 <ScalarProperty Name="ExpectedSalary" ColumnName="ExpectedSalary" />
                 <ScalarProperty Name="Introduction" ColumnName="Introduction" />
-                <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+                <ScalarProperty Name="CurrencyID1" ColumnName="CurrencyID1" />
                 <ScalarProperty Name="ResumePath" ColumnName="ResumePath" />
                 <ScalarProperty Name="Dob" ColumnName="Dob" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
