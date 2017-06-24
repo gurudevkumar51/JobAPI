@@ -152,6 +152,15 @@
           <Property Name="EmailActive" Type="bit" />
           <Property Name="AccountActive" Type="bit" />
         </EntityType>
+        <EntityType Name="Tbl_UserJob">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="Tbl_UserLog">
           <Key>
             <PropertyRef Name="UserID" />
@@ -357,6 +366,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tbl_UserJob_Tbl_Job">
+          <End Role="Tbl_Job" Type="Self.Tbl_Job" Multiplicity="0..1" />
+          <End Role="Tbl_UserJob" Type="Self.Tbl_UserJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Job">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_UserJob">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_UserJob_Tbl_User">
+          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
+          <End Role="Tbl_UserJob" Type="Self.Tbl_UserJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Tbl_UserJob">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Tbl_UserSocialProfile_Tbl_SocialMedia">
           <End Role="Tbl_SocialMedia" Type="Self.Tbl_SocialMedia" Multiplicity="0..1" />
           <End Role="Tbl_UserSocialProfile" Type="Self.Tbl_UserSocialProfile" Multiplicity="*" />
@@ -396,6 +429,7 @@
           <EntitySet Name="Tbl_Skill" EntityType="Self.Tbl_Skill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_SocialMedia" EntityType="Self.Tbl_SocialMedia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_User" EntityType="Self.Tbl_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_UserJob" EntityType="Self.Tbl_UserJob" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_UserLog" EntityType="Self.Tbl_UserLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_UserRole" EntityType="Self.Tbl_UserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_UserSocialProfile" EntityType="Self.Tbl_UserSocialProfile" Schema="dbo" store:Type="Tables" />
@@ -458,6 +492,14 @@
           <AssociationSet Name="FK_Tbl_User_Tbl_UserRole" Association="Self.FK_Tbl_User_Tbl_UserRole">
             <End Role="Tbl_UserRole" EntitySet="Tbl_UserRole" />
             <End Role="Tbl_User" EntitySet="Tbl_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_UserJob_Tbl_Job" Association="Self.FK_Tbl_UserJob_Tbl_Job">
+            <End Role="Tbl_Job" EntitySet="Tbl_Job" />
+            <End Role="Tbl_UserJob" EntitySet="Tbl_UserJob" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_UserJob_Tbl_User" Association="Self.FK_Tbl_UserJob_Tbl_User">
+            <End Role="Tbl_User" EntitySet="Tbl_User" />
+            <End Role="Tbl_UserJob" EntitySet="Tbl_UserJob" />
           </AssociationSet>
           <AssociationSet Name="FK_Tbl_UserSocialProfile_Tbl_SocialMedia" Association="Self.FK_Tbl_UserSocialProfile_Tbl_SocialMedia">
             <End Role="Tbl_SocialMedia" EntitySet="Tbl_SocialMedia" />
@@ -558,6 +600,15 @@
             <End Role="Tbl_User" EntitySet="Tbl_User" />
             <End Role="Tbl_UserSocialProfile" EntitySet="Tbl_UserSocialProfile" />
           </AssociationSet>
+          <EntitySet Name="Tbl_UserJob" EntityType="WebphonixJobsDBModel.Tbl_UserJob" />
+          <AssociationSet Name="FK_Tbl_UserJob_Tbl_Job" Association="WebphonixJobsDBModel.FK_Tbl_UserJob_Tbl_Job">
+            <End Role="Tbl_Job" EntitySet="Tbl_Job" />
+            <End Role="Tbl_UserJob" EntitySet="Tbl_UserJob" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_UserJob_Tbl_User" Association="WebphonixJobsDBModel.FK_Tbl_UserJob_Tbl_User">
+            <End Role="Tbl_User" EntitySet="Tbl_User" />
+            <End Role="Tbl_UserJob" EntitySet="Tbl_UserJob" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Tbl_Currency">
           <Key>
@@ -637,6 +688,7 @@
           <NavigationProperty Name="Tbl_User" Relationship="WebphonixJobsDBModel.FK_Tbl_Job_Tbl_User" FromRole="Tbl_Job" ToRole="Tbl_User" />
           <NavigationProperty Name="Tbl_JobActivity" Relationship="WebphonixJobsDBModel.FK_Tbl_JobActivity_Tbl_Job" FromRole="Tbl_Job" ToRole="Tbl_JobActivity" />
           <NavigationProperty Name="Tbl_JobSkill" Relationship="WebphonixJobsDBModel.FK_Tbl_JobSkill_Tbl_Job" FromRole="Tbl_Job" ToRole="Tbl_JobSkill" />
+          <NavigationProperty Name="Tbl_UserJob" Relationship="WebphonixJobsDBModel.FK_Tbl_UserJob_Tbl_Job" FromRole="Tbl_Job" ToRole="Tbl_UserJob" />
         </EntityType>
         <EntityType Name="Tbl_JobActivity">
           <Key>
@@ -736,6 +788,7 @@
           <NavigationProperty Name="Tbl_SeekerSkill" Relationship="WebphonixJobsDBModel.FK_Tbl_SeekerSkill_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_SeekerSkill" />
           <NavigationProperty Name="Tbl_UserRole" Relationship="WebphonixJobsDBModel.FK_Tbl_User_Tbl_UserRole" FromRole="Tbl_User" ToRole="Tbl_UserRole" />
           <NavigationProperty Name="Tbl_UserSocialProfile" Relationship="WebphonixJobsDBModel.FK_Tbl_UserSocialProfile_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_UserSocialProfile" />
+          <NavigationProperty Name="Tbl_UserJob" Relationship="WebphonixJobsDBModel.FK_Tbl_UserJob_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_UserJob" />
         </EntityType>
         <EntityType Name="Tbl_UserLog">
           <Key>
@@ -969,6 +1022,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Tbl_UserJob">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Tbl_Job" Relationship="WebphonixJobsDBModel.FK_Tbl_UserJob_Tbl_Job" FromRole="Tbl_UserJob" ToRole="Tbl_Job" />
+          <NavigationProperty Name="Tbl_User" Relationship="WebphonixJobsDBModel.FK_Tbl_UserJob_Tbl_User" FromRole="Tbl_UserJob" ToRole="Tbl_User" />
+        </EntityType>
+        <Association Name="FK_Tbl_UserJob_Tbl_Job">
+          <End Type="WebphonixJobsDBModel.Tbl_Job" Role="Tbl_Job" Multiplicity="0..1" />
+          <End Type="WebphonixJobsDBModel.Tbl_UserJob" Role="Tbl_UserJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Job">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_UserJob">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_UserJob_Tbl_User">
+          <End Type="WebphonixJobsDBModel.Tbl_User" Role="Tbl_User" Multiplicity="0..1" />
+          <End Type="WebphonixJobsDBModel.Tbl_UserJob" Role="Tbl_UserJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Tbl_UserJob">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1160,6 +1248,16 @@
                 <ScalarProperty Name="Activity" ColumnName="Activity" />
                 <ScalarProperty Name="SocialMediaID" ColumnName="SocialMediaID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_UserJob">
+            <EntityTypeMapping TypeName="WebphonixJobsDBModel.Tbl_UserJob">
+              <MappingFragment StoreEntitySet="Tbl_UserJob">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

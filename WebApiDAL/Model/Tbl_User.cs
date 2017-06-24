@@ -25,6 +25,7 @@ namespace WebApiDAL.Model
             this.Tbl_SeekerProfile = new HashSet<Tbl_SeekerProfile>();
             this.Tbl_SeekerSkill = new HashSet<Tbl_SeekerSkill>();
             this.Tbl_UserSocialProfile = new HashSet<Tbl_UserSocialProfile>();
+            this.Tbl_UserJob = new HashSet<Tbl_UserJob>();
         }
     
         public int UserID { get; set; }
@@ -55,5 +56,7 @@ namespace WebApiDAL.Model
         public virtual Tbl_UserRole Tbl_UserRole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_UserSocialProfile> Tbl_UserSocialProfile { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_UserJob> Tbl_UserJob { get; set; }
     }
 }

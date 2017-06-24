@@ -39,6 +39,9 @@
         <AssociationConnector Association="WebphonixJobsDBModel.FK_Tbl_UserSocialProfile_Tbl_SocialMedia" />
         <AssociationConnector Association="WebphonixJobsDBModel.FK_Tbl_User_Tbl_UserRole" />
         <AssociationConnector Association="WebphonixJobsDBModel.FK_Tbl_UserSocialProfile_Tbl_User" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_UserJob" Width="1.5" PointX="10.5" PointY="19" />
+        <AssociationConnector Association="WebphonixJobsDBModel.FK_Tbl_UserJob_Tbl_Job" />
+        <AssociationConnector Association="WebphonixJobsDBModel.FK_Tbl_UserJob_Tbl_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

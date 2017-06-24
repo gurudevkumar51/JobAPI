@@ -18,6 +18,7 @@ namespace WebApiDAL.Model
         public WebphonixJobsDBEntities()
             : base("name=WebphonixJobsDBEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -42,5 +43,6 @@ namespace WebApiDAL.Model
         public virtual DbSet<Tbl_UserLog> Tbl_UserLog { get; set; }
         public virtual DbSet<Tbl_UserRole> Tbl_UserRole { get; set; }
         public virtual DbSet<Tbl_UserSocialProfile> Tbl_UserSocialProfile { get; set; }
+        public virtual DbSet<Tbl_UserJob> Tbl_UserJob { get; set; }
     }
 }
