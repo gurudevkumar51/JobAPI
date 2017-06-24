@@ -83,6 +83,7 @@
     <Compile Include="DataAccess\AccountRepository.cs" />
     <Compile Include="DataAccess\EmployerRepository.cs" />
     <Compile Include="DataAccess\JobRepository.cs" />
+    <Compile Include="DataAccess\MasterRepository.cs" />
     <Compile Include="DataAccess\SeekerRepository.cs" />
     <Compile Include="Entity\ChangePassword.cs" />
     <Compile Include="Entity\EmailTemplate.cs" />
@@ -158,13 +159,16 @@
     <Compile Include="ServiceManager\IAccount.cs" />
     <Compile Include="ServiceManager\IEmployer.cs" />
     <Compile Include="ServiceManager\IJob.cs" />
+    <Compile Include="ServiceManager\IMaster.cs" />
     <Compile Include="ServiceManager\ISeeker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mapper\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Model\JobPortal.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>JobPortal.Designer.cs</LastGenOutput>
