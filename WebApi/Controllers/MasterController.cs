@@ -20,7 +20,7 @@ namespace WebApi.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
-        [Route("api/Master/Add")]
+        [Route("api/Master/AddJobType")]
         public IHttpActionResult AddJobType(Tbl_JobType jobtpe)
         {
             if (jobtpe == null)
@@ -29,10 +29,102 @@ namespace WebApi.Controllers
             }
             else
             {
-                var pp = Im.AddRole(jobtpe, out Ermsg);
-                if (pp)
+                var flag = Im.AddJobType(jobtpe, out Ermsg);
+                if (flag)
                 {
                     return Json(new { success = true, responseText = "Job type Added", responseCode = HttpStatusCode.Created });
+                }
+                else
+                {
+                    return Json(new { success = false, responseText = Ermsg, responseCode = HttpStatusCode.InternalServerError });
+                }
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("api/Master/AddUserRole")]
+        public IHttpActionResult AddRole(Tbl_UserRole role)
+        {
+            if (role == null)
+            {
+                return Json(new { success = false, responseText = "Send proper data", responseCode = HttpStatusCode.BadRequest });
+            }
+            else
+            {
+                var flag = Im.AddRole(role, out Ermsg);
+                if (flag)
+                {
+                    return Json(new { success = true, responseText = "Role Added", responseCode = HttpStatusCode.Created });
+                }
+                else
+                {
+                    return Json(new { success = false, responseText = Ermsg, responseCode = HttpStatusCode.InternalServerError });
+                }
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("api/Master/AddSkill")]
+        public IHttpActionResult AddSkill(Tbl_Skill skill)
+        {
+            if (skill == null)
+            {
+                return Json(new { success = false, responseText = "Send proper data", responseCode = HttpStatusCode.BadRequest });
+            }
+            else
+            {
+                var flag = Im.AddSkill(skill, out Ermsg);
+                if (flag)
+                {
+                    return Json(new { success = true, responseText = "Skill Added", responseCode = HttpStatusCode.Created });
+                }
+                else
+                {
+                    return Json(new { success = false, responseText = Ermsg, responseCode = HttpStatusCode.InternalServerError });
+                }
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("api/Master/AddCurrency")]
+        public IHttpActionResult AddCurrency(Tbl_Currency currency)
+        {
+            if (currency == null)
+            {
+                return Json(new { success = false, responseText = "Send proper data", responseCode = HttpStatusCode.BadRequest });
+            }
+            else
+            {
+                var flag = Im.AddCurrency(currency, out Ermsg);
+                if (flag)
+                {
+                    return Json(new { success = true, responseText = "Currency Added", responseCode = HttpStatusCode.Created });
+                }
+                else
+                {
+                    return Json(new { success = false, responseText = Ermsg, responseCode = HttpStatusCode.InternalServerError });
+                }
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("api/Master/AddSocial")]
+        public IHttpActionResult AddSocial(Tbl_SocialMedia social)
+        {
+            if (social == null)
+            {
+                return Json(new { success = false, responseText = "Send proper data", responseCode = HttpStatusCode.BadRequest });
+            }
+            else
+            {
+                var flag = Im.AddSocial(social, out Ermsg);
+                if (flag)
+                {
+                    return Json(new { success = true, responseText = "Social media Added", responseCode = HttpStatusCode.Created });
                 }
                 else
                 {
