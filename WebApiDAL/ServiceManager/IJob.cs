@@ -14,5 +14,6 @@ namespace WebApiDAL.ServiceManager
         Boolean UpdateJob(Tbl_Job job, Tbl_JobActivity jobactivity, out string ErMsg);
         Boolean DeleteJob(int job, Tbl_JobActivity jobactivity, out string ErMsg);
         Boolean ApplyJob(Tbl_JobActivity jobactivity, out string ErMsg);
+        IEnumerable<Tbl_Job> GetAllJobs();
     }
 }

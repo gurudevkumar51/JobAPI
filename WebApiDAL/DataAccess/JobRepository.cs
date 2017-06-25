@@ -90,5 +90,10 @@ namespace WebApiDAL.DataAccess
             db.SaveChanges();
             return true;
         }
+
+        public IEnumerable<Tbl_Job> GetAllJobs()
+        {
+            return db.Tbl_Job.ToList();
+        }
     }
 }

@@ -83,5 +83,13 @@ namespace WebApi.Controllers
                 return Json(new { success = flag, responseText = Ermsg, responseCode = HttpStatusCode.InternalServerError });
             }
         }
+
+        [Route("api/Job/AllJobs")]
+        public IHttpActionResult GetJobs()  
+        {
+            var allActiveJobs = jb.GetAllJobs().ToList();
+            return Json(allActiveJobs);
+            
+        }
     }
 }

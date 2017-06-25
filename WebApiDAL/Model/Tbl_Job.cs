@@ -19,6 +19,7 @@ namespace WebApiDAL.Model
         {
             this.Tbl_JobActivity = new HashSet<Tbl_JobActivity>();
             this.Tbl_JobSkill = new HashSet<Tbl_JobSkill>();
+            this.Tbl_UserJob = new HashSet<Tbl_UserJob>();
         }
     
         public int ID { get; set; }
@@ -38,5 +39,7 @@ namespace WebApiDAL.Model
         public virtual ICollection<Tbl_JobActivity> Tbl_JobActivity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_JobSkill> Tbl_JobSkill { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_UserJob> Tbl_UserJob { get; set; }
     }
 }

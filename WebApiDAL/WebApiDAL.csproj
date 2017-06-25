@@ -146,6 +146,9 @@
     <Compile Include="Model\Tbl_User.cs">
       <DependentUpon>JobPortal.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Tbl_UserJob.cs">
+      <DependentUpon>JobPortal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Tbl_UserLog.cs">
       <DependentUpon>JobPortal.tt</DependentUpon>
     </Compile>
