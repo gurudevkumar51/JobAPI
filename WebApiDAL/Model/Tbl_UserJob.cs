@@ -7,19 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
 namespace WebApiDAL.Model
 {
+
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Tbl_UserJob
     {
+
         public int ID { get; set; }
+
         public Nullable<int> JobId { get; set; }
+
         public Nullable<int> UserId { get; set; }
+
         public Nullable<bool> IsActive { get; set; }
-    
+
+
+
         public virtual Tbl_Job Tbl_Job { get; set; }
+
         public virtual Tbl_User Tbl_User { get; set; }
+
     }
+
 }
