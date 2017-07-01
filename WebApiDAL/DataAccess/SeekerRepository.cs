@@ -60,23 +60,7 @@ namespace WebApiDAL.DataAccess
                 Ermsg = ex.Message;
                 return false;
             }
-        }
-
-        public Boolean EditEducation(Tbl_EducationDetails EduDetails, out string Ermsg)
-        {
-            Ermsg = "";
-            try
-            {
-                db.Entry(EduDetails).State = EntityState.Modified;
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Ermsg = ex.Message;
-                return false;
-            }
-        }
+        }        
 
         public Boolean DeleteEducation(int EduID, out string ErMsg)
         {
@@ -109,23 +93,7 @@ namespace WebApiDAL.DataAccess
                 Ermsg = ex.Message;
                 return false;
             }
-        }
-
-        public Boolean EditExperience(Tbl_ExperienceDetails ExpDetails, out string Ermsg)
-        {
-            Ermsg = "";
-            try
-            {
-                db.Entry(ExpDetails).State = EntityState.Modified;
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Ermsg = ex.Message;
-                return false;
-            }
-        }
+        }        
 
         public Boolean DeleteExperience(int ExpID, out string ErMsg)
         {
@@ -142,6 +110,38 @@ namespace WebApiDAL.DataAccess
                 ErMsg = ex.Message;
                 return false;
             }            
+        }        
+                
+        public Boolean UpdateEducation(Tbl_EducationDetails edu, out string Ermsg)
+        {
+            Ermsg = "";
+            try
+            {
+                db.Entry(edu).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Ermsg = ex.Message;
+                return false;
+            }
+        }
+        
+        public Boolean updateExperience(Tbl_ExperienceDetails exp, out string Ermsg)
+        {
+            Ermsg = "";
+            try
+            {
+                db.Entry(exp).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Ermsg = ex.Message;
+                return false;
+            }
         }
     }
 }

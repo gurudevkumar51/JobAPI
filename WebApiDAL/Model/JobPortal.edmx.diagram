@@ -5,23 +5,23 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="78330d01f67548ac8c58db5a8f7da61e" Name="Diagram1">
-        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_Currency" Width="1.5" PointX="3" PointY="10.375" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_Currency" Width="1.5" PointX="1.25" PointY="7.25" />
         <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_EducationDetails" Width="1.5" PointX="5.25" PointY="29.875" />
-        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_EmployerIndustry" Width="1.5" PointX="3" PointY="18.375" />
-        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_EmployerProfile" Width="1.5" PointX="5.25" PointY="13.75" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_EmployerIndustry" Width="1.5" PointX="3" PointY="16.5" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_EmployerProfile" Width="1.5" PointX="5.25" PointY="12.5" />
         <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_ExperienceDetails" Width="1.5" PointX="5.25" PointY="33.875" />
-        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_Job" Width="1.5" PointX="5.25" PointY="17.375" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_Job" Width="1.5" PointX="5.125" PointY="16" />
         <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_JobActivity" Width="1.5" PointX="10.5" PointY="15.75" />
-        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_JobSkill" Width="1.5" PointX="7.5" PointY="18.125" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_JobSkill" Width="1.5" PointX="7.375" PointY="16.25" />
         <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_JobType" Width="1.5" PointX="3" PointY="21.375" />
-        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_SeekerProfile" Width="1.5" PointX="5.25" PointY="9.375" />
-        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_SeekerSkill" Width="1.5" PointX="8.25" PointY="11.125" />
-        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_Skill" Width="1.5" PointX="6" PointY="6.25" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_SeekerProfile" Width="1.5" PointX="4.625" PointY="6.5" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_SeekerSkill" Width="1.5" PointX="8.125" PointY="7.125" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_Skill" Width="1.5" PointX="4.375" PointY="4" />
         <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_SocialMedia" Width="1.5" PointX="6" PointY="22.375" />
-        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_User" Width="1.5" PointX="3" PointY="12.875" />
-        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_UserLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_User" Width="1.5" PointX="2.625" PointY="9.875" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_UserLog" Width="1.5" PointX="1.5" PointY="1.875" />
         <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_UserRole" Width="1.5" PointX="0.75" PointY="14.375" />
-        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_UserSocialProfile" Width="1.5" PointX="8.25" PointY="14" />
+        <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_UserSocialProfile" Width="1.5" PointX="8.25" PointY="12" />
         <AssociationConnector Association="WebphonixJobsDBModel.FK_Tbl_SeekerProfile_Tbl_Currency" />
         <AssociationConnector Association="WebphonixJobsDBModel.FK_Tbl_EducationDetails_Tbl_User" />
         <AssociationConnector Association="WebphonixJobsDBModel.FK_Tbl_EmployerProfile_Tbl_EmployerIndustry" />
@@ -42,7 +42,7 @@
         <EntityTypeShape EntityType="WebphonixJobsDBModel.Tbl_UserJob" Width="1.5" PointX="10.5" PointY="19" />
         <AssociationConnector Association="WebphonixJobsDBModel.FK_Tbl_UserJob_Tbl_Job" />
         <AssociationConnector Association="WebphonixJobsDBModel.FK_Tbl_UserJob_Tbl_User" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

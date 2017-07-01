@@ -20,9 +20,17 @@ namespace WebApiDAL.DataAccess
             Ermsg = "";
             try
             {
-                db.Tbl_User.Add(usr);
-                db.SaveChanges();
-                return true;
+                if (db.Tbl_User.Any(o => o.UserEmail == usr.UserEmail))
+                {
+                    Ermsg = "This EmailID is already registered with us";
+                    return false;
+                }
+                else
+                {
+                    db.Tbl_User.Add(usr);
+                    db.SaveChanges();
+                    return true;
+                }
             }
             catch (Exception ex)
             {
@@ -72,6 +80,7 @@ namespace WebApiDAL.DataAccess
                 return false;
             }
         }
+               
 
         //Check Login
         public Tbl_User Login(Login lgn, out string ErrMsg)

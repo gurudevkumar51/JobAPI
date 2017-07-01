@@ -38,7 +38,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" />
           <Property Name="IndustryId" Type="int" />
           <Property Name="EmployerName" Type="varchar" MaxLength="50" />
@@ -103,7 +103,7 @@
           <Key>
             <PropertyRef Name="SeekerProfileID" />
           </Key>
-          <Property Name="SeekerProfileID" Type="int" Nullable="false" />
+          <Property Name="SeekerProfileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="100" />
           <Property Name="LastName" Type="varchar" MaxLength="100" />
@@ -141,7 +141,7 @@
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleID" Type="int" />
           <Property Name="UserEmail" Type="varchar(max)" />
           <Property Name="PassWord" Type="varchar" MaxLength="50" />
@@ -165,7 +165,7 @@
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LastLoginDate" Type="datetime" />
           <Property Name="LastJobApplyDate" Type="datetime" />
         </EntityType>

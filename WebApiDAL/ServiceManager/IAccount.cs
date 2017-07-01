@@ -16,5 +16,7 @@ namespace WebApiDAL.ServiceManager
         Boolean UpdateUser(Tbl_User usr, out string Ermsg);
         Boolean DeactivateAccount(int UsrID, out string ErMsg);
         List<Tbl_User> AllUserList();
+
+       
     }
 }

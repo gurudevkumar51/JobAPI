@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace WebApiDAL.DataAccess
 {
-    public class JobRepository : /*BaseRepository,*/ IJob
+    public class JobRepository : IJob
     {
         private WebphonixJobsDBEntities db = new WebphonixJobsDBEntities();
 
@@ -23,8 +23,9 @@ namespace WebApiDAL.DataAccess
                 db.Tbl_Job.Add(job);
                 db.SaveChanges();
                 Tbl_JobActivity jobactivity = new Tbl_JobActivity();
+
                 jobactivity.JobId = job.ID;
-                jobactivity.Activity = "Job created";
+                jobactivity.Activity = "Job created by user ID" + job.UserID;
                 jobactivity.ActivityDate = DateTime.Now;
                 jobactivity.UserID = job.UserID;
 
@@ -77,11 +78,28 @@ namespace WebApiDAL.DataAccess
         }
 
         //To Apply on Job
-        public Boolean ApplyJob(Tbl_JobActivity jobactivity, out string ErMsg)
+        public Boolean ApplyJob(Tbl_UserJob jobapply, out string ErMsg)
         {
             ErMsg = "";
-            AddJobActivity(jobactivity);
-            return true;
+            try
+            {
+                db.Tbl_UserJob.Add(jobapply);
+                db.SaveChanges();
+                Tbl_JobActivity jobactivity = new Tbl_JobActivity();
+
+                jobactivity.Activity = "User ID" + jobapply.UserId + "Applied on Job Id:" + jobapply.JobId;
+                jobactivity.ActivityDate = DateTime.Now;
+                jobactivity.UserID = jobapply.UserId;
+                jobactivity.JobId = jobapply.JobId;
+
+                AddJobActivity(jobactivity);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ErMsg = ex.Message;
+                return false;
+            }
         }
 
         private Boolean AddJobActivity(Tbl_JobActivity jbactivity)
@@ -91,9 +109,17 @@ namespace WebApiDAL.DataAccess
             return true;
         }
 
-        public IEnumerable<Tbl_Job> GetAllJobs()
+        public IEnumerable<Tbl_Job> GetAllActiveJobs()
         {
-            return db.Tbl_Job.ToList();
+            try
+            {
+                var jbs = db.Tbl_Job;
+                return jbs.Where(j => j.IsActive == true).ToList();
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
     }
 }
