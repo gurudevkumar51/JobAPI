@@ -18,7 +18,8 @@ namespace WebApi.Controllers
         {
             Im = new MasterRepository();
         }
-        [AllowAnonymous]
+
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [Route("api/Master/AddJobType")]
         public IHttpActionResult AddJobType(Tbl_JobType jobtpe)
@@ -41,7 +42,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [Route("api/Master/AddUserRole")]
         public IHttpActionResult AddRole(Tbl_UserRole role)
@@ -64,7 +65,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [Route("api/Master/AddSkill")]
         public IHttpActionResult AddSkill(Tbl_Skill skill)
@@ -87,7 +88,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [Route("api/Master/AddCurrency")]
         public IHttpActionResult AddCurrency(Tbl_Currency currency)
@@ -110,7 +111,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [Route("api/Master/AddSocial")]
         public IHttpActionResult AddSocial(Tbl_SocialMedia social)
