@@ -41,7 +41,7 @@ namespace WebApi
                 identity.AddClaim(new Claim("email", usr.UserEmail));
                 identity.AddClaim(new Claim("PhoneNumber", usr.PhoneNumber));
                 identity.AddClaim(new Claim("UserID", usr.UserID.ToString()));
-                identity.AddClaim(new Claim(ClaimTypes.Name, usr.PhoneNumber));
+                identity.AddClaim(new Claim(ClaimTypes.Name, usr.UserID.ToString()));
                 context.Validated(identity);
             }
             else
@@ -49,6 +49,28 @@ namespace WebApi
                 context.SetError("invalid_grant", "Provided Email and password is incorrect");
                 return;
             }
+            //var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+
+            //Login lgn = new Login();
+            //lgn.EmailId = context.UserName;
+            //lgn.Password = context.Password;
+            //var ErrMsg = "";
+            //var usr = Acc.Login(lgn, out ErrMsg);
+
+            //if (usr != null)
+            //{
+            //    identity.AddClaim(new Claim(ClaimTypes.Role, usr.Tbl_UserRole.Role));
+            //    identity.AddClaim(new Claim("email", usr.UserEmail));
+            //    identity.AddClaim(new Claim("PhoneNumber", usr.PhoneNumber));
+            //    identity.AddClaim(new Claim("UserID", usr.UserID.ToString()));
+            //    identity.AddClaim(new Claim(ClaimTypes.Name, usr.PhoneNumber));
+            //    context.Validated(identity);
+            //}
+            //else
+            //{
+            //    context.SetError("invalid_grant", "Provided Email and password is incorrect");
+            //    return;
+            //}
         }
     }
 }
