@@ -104,8 +104,8 @@ namespace WebApiDAL.DataAccess
 
         private Boolean AddJobActivity(Tbl_JobActivity jbactivity)
         {
-            db.Tbl_JobActivity.Add(jbactivity);
-            db.SaveChanges();
+            //db.Tbl_JobActivity.Add(jbactivity);
+            //db.SaveChanges();
             return true;
         }
 
